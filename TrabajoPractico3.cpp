@@ -28,22 +28,31 @@ void MostrarDatos(TPersonaje *D);
 int main()
 {
 	TPersonaje *D;
-	char *n,*a;
-	n="Juan";
-	a="Rodriguez";
+	//char *n,*a;
+	char n[100]="Juan",a[100]="Rodriguez";
+	/*printf("Ingrese nombre: ");
+	scanf("%s",&n);
+	printf("Ingrese apellido: ");
+	scanf("%s",&a);
+	printf("\n");*/
+//	n="Juan";
+//	a="Rodriguez";
 	D=(TPersonaje *)malloc(sizeof(TPersonaje));
-	printf("**********************************\n");
+	//printf("**********************************\n");
 	CargarDatos(D,Mago,n,a,200,50);
 	MostrarDatos(D);
+	//printf("**********************************\n");
 	return 0;
 }
 void CargarDatos(TPersonaje *dato,TRaza raza,char *nombre ,char *apellido,int edad,double salud){
 	
 	dato->DatosPersonales=(TDatos *)malloc(sizeof(TDatos));
 //	dato->DatosPersonales->ApellidoNombre=(char *)malloc(sizeof(char)*(strlen(nombre)+strlen(apellido)));
-	dato->DatosPersonales->ApellidoNombre=(char *)malloc(sizeof(char)*(strlen(nombre)+strlen(apellido)+1));
+	dato->DatosPersonales->ApellidoNombre=(char *)malloc(sizeof(char)*(strlen(nombre)+strlen(apellido)+2));
 	dato->DatosPersonales->ApellidoNombre=strcat(apellido," ");
 	dato->DatosPersonales->ApellidoNombre=strcat(dato->DatosPersonales->ApellidoNombre,nombre);
+	dato->DatosPersonales->ApellidoNombre=strcat(dato->DatosPersonales->ApellidoNombre,"\0");
+	//printf("%s\n", dato->DatosPersonales->ApellidoNombre);
 	dato->DatosPersonales->Raza=raza;
 	dato->DatosPersonales->edad=edad;
 	dato->DatosPersonales->Salud=salud;
