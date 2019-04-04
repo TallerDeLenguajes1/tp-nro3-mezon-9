@@ -46,7 +46,6 @@ int main()
 	CargarDatos(D,Mago,n,a,200,50);
 	MostrarDatos(D);
 	printf("\n\n");
-
 	cargar_caract(&p);
 	//printf("**********************************\n");
 	return 0;
