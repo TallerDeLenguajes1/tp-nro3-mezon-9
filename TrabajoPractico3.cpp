@@ -23,11 +23,15 @@ struct TPersonaje {
 	TDatos * DatosPersonales;
 	TCaracteristicas * Caracteristicas;
 };
+
 void CargarDatos(TPersonaje *dato, TRaza raza,char *nombre ,char *apellido,int edad,double salud);
 void MostrarDatos(TPersonaje *D);
+void cargar_caract(TCaracteristicas *p);
+
 int main()
 {
 	TPersonaje *D;
+	TCaracteristicas p;
 	//char *n,*a;
 	char n[100]="Juan",a[100]="Rodriguez";
 	/*printf("Ingrese nombre: ");
@@ -41,6 +45,9 @@ int main()
 	//printf("**********************************\n");
 	CargarDatos(D,Mago,n,a,200,50);
 	MostrarDatos(D);
+	printf("\n\n");
+
+	cargar_caract(&p);
 	//printf("**********************************\n");
 	return 0;
 }
@@ -64,4 +71,21 @@ void MostrarDatos(TPersonaje *D){
 	printf("Raza: %d\n", D->DatosPersonales->Raza);
 	printf("Edad: %d\n",D->DatosPersonales->edad );
 	printf("Salud: %.2f\n", D->DatosPersonales->Salud);
+}
+
+void cargar_caract(TCaracteristicas *p){
+
+	srand(time(NULL));
+	p -> velocidad=1 + rand()%(1+9);
+	p -> destreza=1 + rand()%(1+5);
+	p -> fuerza =1 + rand()%(1+9);
+	p -> Nivel=1 + rand()%(1+9);
+	p -> Armadura=1 + rand()%(1+9);
+
+	printf("velocidad=%d\n\r",p -> velocidad);
+	printf("destreza=%d\n\r",p -> destreza);
+	printf("fuerza=%d\n\r",p -> fuerza);
+	printf("nivel=%d\n\r",p -> Nivel);
+	printf("armadura=%d\n\r",p -> Armadura);
+	
 }
